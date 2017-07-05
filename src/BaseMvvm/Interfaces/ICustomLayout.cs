@@ -45,7 +45,7 @@ namespace BaseMvvm.XamarinForms.Interfaces
 
         TViewModel GetViewModel<TViewModel>() where TViewModel : BaseViewModel;
 
-        void OnPullToRefresh(object bindingContextData);
+        void OnPullToRefresh();
 
         /// <summary>
         /// set custom command with external method, be careful for the multiple addition 

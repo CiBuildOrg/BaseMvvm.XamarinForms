@@ -75,7 +75,7 @@ namespace BaseMvvm.XamarinForms.Views
             return (TViewModel)ViewModel;
         }
 
-        public virtual void OnPullToRefresh(object bindingContextData)
+        public virtual void OnPullToRefresh()
         {
         }
 

@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace BaseMvvm.XamarinForms.ViewModels
 {
-    public delegate void OnCommandDelegate(object bindingContextData);
+    public delegate void OnCommandDelegate();
 
     public partial class BaseViewModel : ObservableObject
     {
@@ -104,7 +104,7 @@ namespace BaseMvvm.XamarinForms.ViewModels
                 await Task.Run(() =>
                     {
                         IsBusy = true;
-                        cmds[parameters[0]](this);
+                        cmds[parameters[0]]();
                         IsBusy = false;
                     }
                 );
@@ -113,7 +113,7 @@ namespace BaseMvvm.XamarinForms.ViewModels
             {
                 await Task.Run(() =>
                     {
-                        cmds[parameters[0]](this);
+                        cmds[parameters[0]]();
                     }
                 );
             }

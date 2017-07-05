@@ -16,7 +16,7 @@ namespace SampleApp.Views
             InitializeComponent();
         }
 
-        public override void OnPullToRefresh(object bindingContextData)
+        public override void OnPullToRefresh()
         {
             for (int i = 0; i < 100000; i++)
             {

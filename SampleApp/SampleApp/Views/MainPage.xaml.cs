@@ -21,7 +21,7 @@ namespace SampleApp.Views
 
         private bool bl = false;
 
-        private void CustomCmdMth(object viewModel)
+        private void CustomCmdMth()
         {
             if (bl)
             {

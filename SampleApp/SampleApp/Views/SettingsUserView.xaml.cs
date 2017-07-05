@@ -20,7 +20,7 @@ namespace SampleApp.Views
             CallCommand("OnLoadProfile", true);
         }
 
-        public void OnLoadProfile(object bindingContextData)
+        public void OnLoadProfile()
         {
             for (int i = 0; i < 100000; i++)
             {
