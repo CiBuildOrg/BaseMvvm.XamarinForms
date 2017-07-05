@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:CustomContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SampleApp"
+             xmlns:views="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
+             x:Class="SampleApp.MainPage">
+    <views:CustomContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
+            <Label x:Name="LblInfo" Text="default text" ></Label>
+            <Button x:Name="BtnCallCmd" Text="Call Command" Clicked="BtnCallCmd_Clicked"></Button>
+            <Button x:Name="BtnCmd" Text="Using Command and PullToRefresh" Clicked="BtnCmd_Clicked"></Button>
+            <Button x:Name="BtnThrowException" Text="Throw Exception" Clicked="BtnThrowException_Clicked"></Button>
+            <Button x:Name="BtnMessaningCenter1" Text="Custom Event" Clicked="BtnMessaningCenter1_Clicked"></Button>
+            <Button x:Name="BtnProfile" Text="Load UserProfile" Clicked="BtnProfile_Clicked"></Button>
+        </StackLayout>
+    </views:CustomContentPage.Content>
+</views:CustomContentPage>

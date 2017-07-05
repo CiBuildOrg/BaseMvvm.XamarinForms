@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:CustomContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
+             x:Class="SampleApp.Views.SettingsUserView">
+    <views:CustomContentView.Content>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Label x:Name="LblUserName" Text="{Binding DisplayName}" />
+            <ActivityIndicator Color="Black" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}">
+            </ActivityIndicator>
+        </StackLayout>
+    </views:CustomContentView.Content>
+</views:CustomContentView>

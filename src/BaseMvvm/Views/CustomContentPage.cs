@@ -20,9 +20,9 @@ namespace BaseMvvm.XamarinForms.Views
 
         public CustomContentPage(bool navigationBar, object bindingContextData)
         {
-            MvvmMessagingCenter.Init(this);
             ViewModel = bindingContextData ?? Activator.CreateInstance(typeof(BaseViewModel));
             this.BindingContext = ViewModel;
+            MvvmMessagingCenter.Init(this);
             NavigationPage.SetHasNavigationBar(this, navigationBar);
             SetCommand("OnPullToRefresh", OnPullToRefresh);
         }

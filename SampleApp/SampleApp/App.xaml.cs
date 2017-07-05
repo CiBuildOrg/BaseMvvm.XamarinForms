@@ -11,7 +11,12 @@ namespace SampleApp
         public App()
         {
             InitializeComponent();
-            MainPage = new SampleApp.MainPage();
+            SetMainPage();
+        }
+
+        public static void SetMainPage()
+        {
+            Current.MainPage = new NavigationPage(new SampleApp.MainPage());
         }
 
         protected override void OnStart()
