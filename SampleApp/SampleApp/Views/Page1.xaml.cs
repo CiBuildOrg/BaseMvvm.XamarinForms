@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using BaseMvvm.XamarinForms.Views;
-using Xamarin.Forms;
+﻿using BaseMvvm.XamarinForms.Views;
 using Xamarin.Forms.Xaml;
 
-namespace SampleApp
+namespace SampleApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : CustomContentPage

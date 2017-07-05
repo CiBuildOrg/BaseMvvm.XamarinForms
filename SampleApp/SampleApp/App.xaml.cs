@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace SampleApp
 {
@@ -16,7 +19,7 @@ namespace SampleApp
 
         public static void SetMainPage()
         {
-            Current.MainPage = new NavigationPage(new SampleApp.MainPage());
+            Current.MainPage = new NavigationPage(new Views.MainPage());
         }
 
         protected override void OnStart()
