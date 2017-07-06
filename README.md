@@ -153,7 +153,7 @@ try
 }
 catch (Exception exception)
 {
-    //currentPage is auto change to subcriber
+    //subcriber is auto change to currentPage...
     MvvmMessagingCenter.SendException(this, exception); 
     
     //also you can send this error to different page
