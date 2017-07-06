@@ -4,4 +4,4 @@
 BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 
 # Gudeline
-- go to [Wiki](https://github.com/msx752/BaseMvvm.XamarinForms/wiki/Guideline-Home-Page)
+- go to [Wiki](https://github.com/msx752/BaseMvvm.XamarinForms/wiki)
