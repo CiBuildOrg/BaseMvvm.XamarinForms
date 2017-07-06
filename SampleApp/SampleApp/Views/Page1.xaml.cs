@@ -1,4 +1,6 @@
-﻿using BaseMvvm.XamarinForms.Views;
+﻿using BaseMvvm.XamarinForms.ViewModels;
+using BaseMvvm.XamarinForms.Views;
+using SampleApp.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace SampleApp.Views
@@ -11,13 +13,14 @@ namespace SampleApp.Views
             InitializeComponent();
         }
 
-        public Page1(bool navigationBar) : base(navigationBar)
+        public Page1(bool navigationBar) : base(navigationBar, new Page1ViewModel())
         {
             InitializeComponent();
         }
 
         public override void OnPullToRefresh()
         {
+            GetViewModel<Page1ViewModel>().CustomText = "processing...";
             for (int i = 0; i < 100000; i++)
             {
                 for (int j = 0; j < 10000; j++)
@@ -25,7 +28,7 @@ namespace SampleApp.Views
                     //async
                 }
             }
-            LblInfo.Text = "pulled and refreshed the page";
+            GetViewModel<Page1ViewModel>().CustomText = "pulled and refreshed the page";
         }
     }
 }

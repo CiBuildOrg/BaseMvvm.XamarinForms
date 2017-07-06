@@ -4,14 +4,15 @@
              xmlns:local="clr-namespace:SampleApp"
              xmlns:views="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
              x:Class="SampleApp.Views.MainPage">
-    <views:CustomContentPage.Content>
-        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
-            <Label x:Name="LblInfo" Text="default text" ></Label>
-            <Button x:Name="BtnCallCmd" Text="Call Command" Clicked="BtnCallCmd_Clicked"></Button>
-            <Button x:Name="BtnCmd" Text="Using Command and PullToRefresh" Clicked="BtnCmd_Clicked"></Button>
-            <Button x:Name="BtnThrowException" Text="Throw Exception" Clicked="BtnThrowException_Clicked"></Button>
-            <Button x:Name="BtnMessaningCenter1" Text="Custom Event" Clicked="BtnMessaningCenter1_Clicked"></Button>
-            <Button x:Name="BtnProfile" Text="Load UserProfile" Clicked="BtnProfile_Clicked"></Button>
-        </StackLayout>
-    </views:CustomContentPage.Content>
+  <views:CustomContentPage.Content>
+    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
+      <Label x:Name="LblInfo" Text="."></Label>
+      <Label x:Name="LblCmd" Text="{Binding LblText}"></Label>
+      <Button x:Name="BtnCallCmd" Text="Call Command"  Command="{Binding Commands}" CommandParameter="BtnCallCommand,true"></Button>
+      <Button x:Name="BtnCmd" Text="Using Command with PullToRefresh" Clicked="BtnCmd_Clicked"></Button>
+      <Button x:Name="BtnThrowException" Text="Throw Exception" Clicked="BtnThrowException_Clicked"></Button>
+      <Button x:Name="BtnMessaningCenter1" Text="Custom Event" Clicked="BtnMessaningCenter1_Clicked"></Button>
+      <Button x:Name="BtnProfile" Text="Load UserProfile" Clicked="BtnProfile_Clicked"></Button>
+    </StackLayout>
+  </views:CustomContentPage.Content>
 </views:CustomContentPage>
