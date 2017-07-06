@@ -28,6 +28,18 @@ BaseMvvm.XamarinForms
         }
     }
 ```
+- and xaml side
+ ```c#
+ <views:CustomContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SampleApp"
+             xmlns:views="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
+             x:Class="SampleApp.Views.MainPage">
+  <views:CustomContentPage.Content>
+    //stacklayout etc..
+  </views:CustomContentPage.Content>
+</views:CustomContentPage>
+ ```
 
 ### Using CommandProperty with CommandParameter
 - we dont need everytime a new ICommand instance we only sets onces then call it with parameter, it allows call different action.
