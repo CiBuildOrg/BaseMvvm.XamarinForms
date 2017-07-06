@@ -5,7 +5,7 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 
 
 ### Using CustomContentPage and CustomContentView
-- just change `ContentPage` to `CustomContentPage` or `CustomContentView`
+- just change **ContentPage** to **CustomContentPage** or **CustomContentView**
 
 ```c#
 
@@ -22,7 +22,8 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
             InitializeComponent();
         }
         //or
-        public MainPage(bool navigationBar, object bindingContextData) : base(navigationBar, bindingContextData) //show/hide navigationBar AND sets ViewModel to bindingContext (default ViewModel is BaseViewModel)
+        //show/hide navigationBar AND sets ViewModel to bindingContext (default ViewModel is BaseViewModel)
+        public MainPage(bool navigationBar, object bindingContextData) : base(navigationBar, bindingContextData)
         {
             InitializeComponent();
         }
@@ -45,36 +46,44 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 ### Using CommandProperty with CommandParameter
 - we dont need everytime a new ICommand instance we only sets onces then call it with parameter, it allows call different action.
  ```c#
-            SetCommand("CustomCmd", CustomCmdMth); //command initializer, first parameter is commandName, second is that actionMethod
+//command initializer, first parameter is commandName, second is that actionMethod
+SetCommand("CustomCmd", CustomCmdMth); 
 
-            CallCommand("CustomCmd", false); //call command with commandName, second parameter is that manage the `IsBusy` Property for ActivitiyIndicator and also it works async if sets `True`.
+//call command with commandName, second parameter is that manage the `IsBusy` 
+//Property for ActivitiyIndicator and also it works async if sets `True`.
+CallCommand("CustomCmd", false);
 ```
-- also we can determine the custom method for any commandAction (we have one restriction, if we use `CallCommand` in constructure there is no restriction but if we use `CallCommand` in other methods `we can not access xaml properties directly`, so we have to use ViewModel for bridge with binding (you can see in sample project) )
+- also we can determine the custom method for any commandAction (we have one restriction, if we use **CallCommand** in constructure there is no restriction but if we use **CallCommand** in other methods **we can not access xaml properties directly**, so we have to use ViewModel for bridge with binding (you can see in sample project) )
  ```c#
     SetCommand("CustomCmd", CustomCmdMth); 
  
  
-      private void CustomCmdMth()
-      {
-          this.Title ="Page Title" //[RESTRCTION] if we need to use like this, we must call from CTOR otherwise you will get an exception, so we must use GetViewModel<>()
-          GetViewModel<BaseViewModel>().Title = "Page Title //[NO RESTRCTION]   //every Page has default ViewModel which names `BaseViewModel`
-          
-          //it can be works async if set TRUE,  CallCommand("CustomCmd", True);
-      }
+private void CustomCmdMth()
+{
+this.Title ="Page Title" //[RESTRCTION] if we need to use like this, 
+                         //we must call from CTOR otherwise you will 
+                         //get an exception, so we must use GetViewModel<>()
+
+GetViewModel<BaseViewModel>().Title = "Page Title"; //[NO RESTRCTION]
+                                                    //every Page has default ViewModel 
+                                                    //which names `BaseViewModel`
+
+//it can be works async if set TRUE,  CallCommand("CustomCmd", True);
+}
  ```
  
  - or we can use in xaml, do not forget every CustomContentPage and CustomContentView are already binded with BaseViewModel if you not use custom ViewModel
  ```c#
-    //CommandParameter="CustomCmd,true"  first: commandName, second: whether use IsBusy or not
-    <Button x:Name="BtnCallCmd" Text="Call Command"  Command="{Binding Commands}" CommandParameter="CustomCmd,true"></Button>
+ //CommandParameter="CustomCmd,true"  first: commandName, second: whether use IsBusy or not
+ <Button x:Name="BtnCallCmd" Text="Call Command"  Command="{Binding Commands}" CommandParameter="CustomCmd,true"/>
  ```
  
  
  ### PullToRefresh Feature
- - thanks to `jamesmontemagno` for this feature, i only changed a few codes for implement to my Library, so now it calls `
-            command.Execute("OnPullToRefresh");` you do not need to determine a command for this.
+ - thanks to **jamesmontemagno** for this feature, i only changed a few codes for implement to my Library,so now it calls `command.Execute("OnPullToRefresh");` you do not need to determine a command for this.
   ```c#
-    // implementation is same with original library but RefreshCommand only should be "{Binding Commands}", in short this is static value for every CommnandProperty
+// implementation is same with original library but RefreshCommand only should be "{Binding Commands}", 
+// in short this is static value for every CommnandProperty
    <layouts:PullToRefreshLayout
         IsPullToRefreshEnabled="True"
         RefreshCommand="{Binding Commands}"
@@ -83,7 +92,7 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
         
         </layouts:PullToRefreshLayout>
   ```
-  - then we can handling it in code base, only override the `OnPullToRefresh` method, (IsBusy property is auto changing)
+  - then we can handling it in code base, only override **the OnPullToRefresh** method,(IsBusy property is auto changing)
     ```c#
      public override void OnPullToRefresh()
      {
@@ -93,17 +102,26 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
     ```
     
   ### MvvmMessagingCenter
+  - extend of MessagingCenter for **the BaseMvvm.XamarinForms**, it must be use for using below methods.
   
-   #### Init() method
+   #### Init()
+   - this method initializer for **the ICustomLayout** `(CustomContentPage and CustomContentView)` and also you don not need to use this method (it works automatically).
    
-   #### SubcribeIncomingEvent
+   #### role of OnAppearing()
+   - this method controls the CurrentPage which derived from CustomContentPage or CustomContentView, so it works when created a new instance of ICustomLayout or changed the display page (same as xamarin.forms.dll) therefore it changes the current page for MessagingCenter senders. (it works automatically no need to override)
    
-   #### SendIncomingEvent
+   #### SubcribeIncomingEvent()
+   - same as `MessagingCenter.Subcribe()` but little bit changed version, it can be use for every event **except ThrowingException** we can use it for different handler. (in short subcriber of **OnIncomingEvents()** method)
    
-   #### OnIncomingEvents
+   #### SendIncomingEvent()
+   - send event data to Page which is derived from ICustomLayout
    
-   #### SendException
+   #### OnIncomingEvents()
+   - handler of **SendIncomingEvent()**
+   
+   #### SendException()
+   - send exception to currentPage or differentPage which is derived from ICustomLayout
  
-   #### OnException
- 
-   #### role of OnAppearing() method
+   #### OnException()
+   - handler of **OnException()**
+   
