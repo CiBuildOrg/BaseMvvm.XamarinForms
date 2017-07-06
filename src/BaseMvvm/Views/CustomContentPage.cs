@@ -22,9 +22,14 @@ namespace BaseMvvm.XamarinForms.Views
         {
             ViewModel = bindingContextData ?? Activator.CreateInstance(typeof(BaseViewModel));
             this.BindingContext = ViewModel;
-            MvvmMessagingCenter.Init(this);
             NavigationPage.SetHasNavigationBar(this, navigationBar);
             SetCommand("OnPullToRefresh", OnPullToRefresh);
+        }
+
+        public new virtual void OnAppearing()
+        {
+            MvvmMessagingCenter.Init(this);
+            base.OnAppearing();
         }
 
         public ICommand Commands
