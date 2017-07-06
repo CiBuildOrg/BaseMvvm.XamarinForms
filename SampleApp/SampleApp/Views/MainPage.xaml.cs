@@ -12,15 +12,16 @@ namespace SampleApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : CustomContentPage
     {
-        public MainPage() : base(false, new MainPageViewModel())//disabled navigationbar and sets viewModel
+        public MainPage() : base(false, new MainPageViewModel()) //disabled navigationbar and sets viewModel
         {
             InitializeComponent();
             //
-            SetCommand("CustomCmd", CustomCmdMth);//setter
+            SetCommand("CustomCmd", CustomCmdMth); //setter
 
-            CallCommand("CustomCmd", false);//you can access xaml properties while call from in ctor
+            CallCommand("CustomCmd", false); //you can access xaml properties while call from in ctor
             //
-            SetCommand("BtnCallCommand", BtnCallFromCmd);//setter
+            SetCommand("BtnCallCommand", BtnCallFromCmd); //setter
+            MvvmMessagingCenter.SubcribeIncomingEvent(this, "testMessage");
         }
 
         private bool bl = false;
@@ -40,7 +41,8 @@ namespace SampleApp.Views
 
         private void BtnCallFromCmd()
         {
-            GetViewModel<MainPageViewModel>().LblText = "text is changed dynamically: " + GetViewModel<MainPageViewModel>().State;
+            GetViewModel<MainPageViewModel>().LblText =
+                "text is changed dynamically: " + GetViewModel<MainPageViewModel>().State;
             GetViewModel<MainPageViewModel>().State = !GetViewModel<MainPageViewModel>().State;
         }
 
@@ -52,7 +54,7 @@ namespace SampleApp.Views
             }
             catch (Exception exception)
             {
-                MvvmMessagingCenter.SendException(this, exception);//subcriber is auto change to currentPage
+                MvvmMessagingCenter.SendException(this, exception); //subcriber is auto change to currentPage
             }
         }
 
@@ -63,19 +65,31 @@ namespace SampleApp.Views
 
         public override void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
         {
-            object obj = args.Cast<object>();//custom caster
+            object obj = args.Cast<object>(); //custom caster
             DisplayAlert("exception", args.MessageId + " " + obj.ToString(), "OK");
         }
 
         private void BtnMessaningCenter1_Clicked(object sender, EventArgs e)
         {
-            MvvmMessagingCenter.SubcribeIncomingEvent(this, "testMessage");
             MvvmMessagingCenter.SendIncomingEvent(this, "testMessage", new { userName = "mustafa" });
         }
 
         private async void BtnProfile_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SettingsUser() { Title = "User Profile" });
+        }
+
+        private async void BtnDyncmc_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                throw new Exception("redirected custom exception to another page!!!");
+            }
+            catch (Exception exception)
+            {
+                MvvmMessagingCenter.SendException(this, exception); //subcriber is auto change to currentPage
+                await Navigation.PushAsync(new ExceptionPage());
+            }
         }
     }
 }

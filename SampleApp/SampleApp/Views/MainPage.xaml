@@ -13,6 +13,7 @@
       <Button x:Name="BtnThrowException" Text="Throw Exception" Clicked="BtnThrowException_Clicked"></Button>
       <Button x:Name="BtnMessaningCenter1" Text="Custom Event" Clicked="BtnMessaningCenter1_Clicked"></Button>
       <Button x:Name="BtnProfile" Text="Load UserProfile" Clicked="BtnProfile_Clicked"></Button>
+      <Button x:Name="BtnDyncmc" Text="Throw Exception Dynamic" Clicked="BtnDyncmc_Clicked"></Button>
     </StackLayout>
   </views:CustomContentPage.Content>
 </views:CustomContentPage>
