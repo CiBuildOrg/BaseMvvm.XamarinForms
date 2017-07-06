@@ -9,25 +9,25 @@ BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 
 ```c#
 
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : CustomContentPage // or CustomContentView
+[XamlCompilation(XamlCompilationOptions.Compile)]
+public partial class MainPage : CustomContentPage // or CustomContentView
+{
+    public MainPage() : base() 
     {
-        public MainPage() : base() 
-        {
-            InitializeComponent();
-        }
-        //or
-        public MainPage(bool navigationBar) : base(navigationBar) // show/hide navigationBar
-        {
-            InitializeComponent();
-        }
-        //or
-        //show/hide navigationBar AND sets ViewModel to bindingContext (default ViewModel is BaseViewModel)
-        public MainPage(bool navigationBar, object bindingContextData) : base(navigationBar, bindingContextData)
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
+    //or
+    public MainPage(bool navigationBar) : base(navigationBar) // show/hide navigationBar
+    {
+        InitializeComponent();
+    }
+    //or
+    //show/hide navigationBar AND sets ViewModel to bindingContext (default ViewModel is BaseViewModel)
+    public MainPage(bool navigationBar, object bindingContextData) : base(navigationBar, bindingContextData)
+    {
+        InitializeComponent();
+    }
+}
 ```
 - and xaml side
  ```c#
@@ -75,7 +75,11 @@ GetViewModel<BaseViewModel>().Title = "Page Title"; //[NO RESTRCTION]
  - or we can use in xaml, do not forget every CustomContentPage and CustomContentView are already binded with BaseViewModel if you not use custom ViewModel
  ```c#
  //CommandParameter="CustomCmd,true"  first: commandName, second: whether use IsBusy or not
- <Button x:Name="BtnCallCmd" Text="Call Command"  Command="{Binding Commands}" CommandParameter="CustomCmd,true"/>
+ <Button x:Name="BtnCallCmd" 
+        Text="Call Command" 
+        Command="{Binding Commands}" 
+        CommandParameter="CustomCmd,true">
+</Button>
  ```
  
  
@@ -89,17 +93,17 @@ GetViewModel<BaseViewModel>().Title = "Page Title"; //[NO RESTRCTION]
         RefreshCommand="{Binding Commands}"
         IsRefreshing="{Binding IsBusy}"
         RefreshColor="Blue">
-        
-        </layouts:PullToRefreshLayout>
+        //stacklayout etc..
+</layouts:PullToRefreshLayout>
   ```
   - then we can handling it in code base, only override **the OnPullToRefresh** method,(IsBusy property is auto changing)
-    ```c#
-     public override void OnPullToRefresh()
-     {
-            GetViewModel<BaseViewModel>().Title = "pulled and refreshed the page";
-            //we dont have any IsBusy changer in this scope, it is automatic
-     }
-    ```
+```c#
+ public override void OnPullToRefresh()
+ {
+        GetViewModel<BaseViewModel>().Title = "pulled and refreshed the page";
+        //we dont have any IsBusy changer in this scope, it is automatic
+ }
+```
     
   ### MvvmMessagingCenter
   - extend of MessagingCenter for **the BaseMvvm.XamarinForms**, it must be use for using below methods.
@@ -112,16 +116,56 @@ GetViewModel<BaseViewModel>().Title = "Page Title"; //[NO RESTRCTION]
    
    #### SubcribeIncomingEvent()
    - same as `MessagingCenter.Subcribe()` but little bit changed version, it can be use for every event **except ThrowingException** we can use it for different handler. (in short subcriber of **OnIncomingEvents()** method)
-   
+```c#
+//most common determining place is CTOR
+//this:> subcriber page (it will be change every page action, so it is dynamic)
+//string:> name of Message (same as MessagingCenter)
+MvvmMessagingCenter.SubcribeIncomingEvent(this, "testMessage");
+```
+
    #### SendIncomingEvent()
    - send event data to Page which is derived from ICustomLayout
+```c#
+MvvmMessagingCenter.SendIncomingEvent(this, "testMessage", new { userName = "mustafa" });
+```
+
+   ##### About MvvmMessagingCenterEventArgs
+   - **MessageId Property** is same as Message of Sender
+   - **Event Property** object type variable
+   - **Cast<>() Method** caster of **Event Property**
    
    #### OnIncomingEvents()
    - handler of **SendIncomingEvent()**
+```c#
+public override void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
+{
+object obj = args.Cast<object>(); //custom caster, whatevery you want, you can cast
+DisplayAlert("exception", args.MessageId + " " + obj.ToString(), "OK");
+```
+   
    
    #### SendException()
    - send exception to currentPage or differentPage which is derived from ICustomLayout
+   ```c#            
+try
+{
+    throw new Exception("redirected custom exception to another page!!!");
+}
+catch (Exception exception)
+{
+    //subcriber is auto change to currentPage
+    MvvmMessagingCenter.SendException(this, exception); 
+    
+    //also you can send this error to different page
+    await Navigation.PushAsync(new ExceptionPage());
+}
+   ```
  
    #### OnException()
-   - handler of **OnException()**
-   
+   - handler of **SendException()**
+```c#     
+public override void OnException(object sender, Exception exception)
+{
+    DisplayAlert("exception", exception.Message, "OK");
+}
+```
