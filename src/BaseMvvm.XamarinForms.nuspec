@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>BaseMvvm.XamarinForms</id>
+        <version>1.0.0.5</version>
+        <title>BaseMvvm.XamarinForms</title>
+        <authors>Mustafa Salih ASLIM</authors>
+        <owners>Mustafa Salih ASLIM</owners>
+        <licenseUrl>https://github.com/msx752/BaseMvvm.XamarinForms/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/msx752/BaseMvvm.XamarinForms</projectUrl>
+        <iconUrl>https://github.com/msx752/BaseMvvm.XamarinForms/blob/master/wfc.png?raw=true</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>all-in-one easy mvvm implementation for Xamarin.Forms with PullToRefresh feature. look at github for guideline or take a look at sample project.</description>
+        <releaseNotes>there is no changes only dependency versions are fixed for Xamarin.Forms</releaseNotes>
+        <copyright>Copyright 2017</copyright>
+        <tags>Xamarin.Forms Xamarin Android IOS Mvvm ContentPage ContentView</tags>
+        <dependencies>
+            <group>
+                <dependency id="Xamarin.Forms" version="2.3.4.247" />
+            </group>
+            <group targetFramework="MonoAndroid6.0">
+                <dependency id="Xamarin.Android.Support.Animated.Vector.Drawable" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.Design" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.v4" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.v7.AppCompat" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.v7.CardView" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.v7.MediaRouter" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.v7.RecyclerView" version="[23.3.0]" />
+                <dependency id="Xamarin.Android.Support.Vector.Drawable" version="[23.3.0]" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+    <file src="BaseMvvm\bin\Release\BaseMvvm.XamarinForms.dll" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.dll" />
+    <file src="BaseMvvm\bin\Release\BaseMvvm.XamarinForms.xml" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.xml" />
+    <file src="BaseMvvm\bin\Release\BaseMvvm.XamarinForms.pdb" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.pdb" />
+
+    <file src="BaseMvvm.Droid\bin\release\BaseMvvm.Droid.dll" target="lib\monoandroid60\BaseMvvm.Droid.dll" />
+    <file src="BaseMvvm.Droid\bin\release\BaseMvvm.Droid.xml" target="lib\monoandroid60\BaseMvvm.Droid.xml" />
+    <file src="BaseMvvm.Droid\bin\release\BaseMvvm.Droid.pdb" target="lib\monoandroid60\BaseMvvm.Droid.pdb" />
+
+    <file src="BaseMvvm.iOS\bin\release\BaseMvvm.iOS.dll" target="lib\xamarinios10\BaseMvvm.iOS.dll" />
+    <file src="BaseMvvm.iOS\bin\release\BaseMvvm.iOS.xml" target="lib\xamarinios10\BaseMvvm.iOS.xml" />
+    <file src="BaseMvvm.iOS\bin\release\BaseMvvm.iOS.pdb" target="lib\xamarinios10\BaseMvvm.iOS.pdb" /> 
+    </files>
+</package>
