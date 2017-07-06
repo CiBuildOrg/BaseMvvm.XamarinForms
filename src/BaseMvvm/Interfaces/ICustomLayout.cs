@@ -8,10 +8,10 @@ namespace BaseMvvm.XamarinForms.Interfaces
 {
     public interface ICustomLayout
     {
-        NavigationPage NavPage { get; }
         ICommand Commands { get; }
         FileImageSource Icon { get; set; }
         bool IsBusy { get; set; }
+        NavigationPage NavPage { get; }
         string Title { get; set; }
         object ViewModel { get; }
 
@@ -24,6 +24,8 @@ namespace BaseMvvm.XamarinForms.Interfaces
         /// use with activityindicator 
         /// </param>
         void CallCommand(string commandName, bool useBusyIndicator = true);
+
+        TViewModel GetViewModel<TViewModel>() where TViewModel : BaseViewModel;
 
         /// <summary>
         /// incoming exception from messaging center 
@@ -42,8 +44,6 @@ namespace BaseMvvm.XamarinForms.Interfaces
         /// <param name="args">
         /// </param>
         void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args);
-
-        TViewModel GetViewModel<TViewModel>() where TViewModel : BaseViewModel;
 
         void OnPullToRefresh();
 

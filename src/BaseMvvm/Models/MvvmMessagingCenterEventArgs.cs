@@ -14,8 +14,7 @@ namespace BaseMvvm.XamarinForms.Models
             this.Event = data;
         }
 
-        public string MessageId { get; }
-
         public object Event { get; }
+        public string MessageId { get; }
     }
 }

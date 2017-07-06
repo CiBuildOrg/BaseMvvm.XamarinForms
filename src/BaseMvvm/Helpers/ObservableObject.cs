@@ -11,6 +11,26 @@ namespace BaseMvvm.XamarinForms.Helpers
     public class ObservableObject : INotifyPropertyChanged
     {
         /// <summary>
+        /// Occurs when property changed. 
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises the property changed event. 
+        /// </summary>
+        /// <param name="propertyName">
+        /// Property name. 
+        /// </param>
+        protected void OnPropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
+
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
         /// Sets the property. 
         /// </summary>
         /// <returns>
@@ -43,26 +63,6 @@ namespace BaseMvvm.XamarinForms.Helpers
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
-        }
-
-        /// <summary>
-        /// Occurs when property changed. 
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Raises the property changed event. 
-        /// </summary>
-        /// <param name="propertyName">
-        /// Property name. 
-        /// </param>
-        protected void OnPropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

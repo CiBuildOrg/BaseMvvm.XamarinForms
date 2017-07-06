@@ -10,6 +10,36 @@ namespace BaseMvvm.XamarinForms.Layouts
     public class PullToRefreshLayout : ContentView
     {
         /// <summary>
+        /// The is pull to refresh enabled property. 
+        /// </summary>
+        public static readonly BindableProperty IsPullToRefreshEnabledProperty =
+            BindableProperty.Create(nameof(IsPullToRefreshEnabled), typeof(bool), typeof(PullToRefreshLayout), true);
+
+        /// <summary>
+        /// The is refreshing property. 
+        /// </summary>
+        public static readonly BindableProperty IsRefreshingProperty =
+            BindableProperty.Create(nameof(IsRefreshing), typeof(bool), typeof(PullToRefreshLayout), false);
+
+        /// <summary>
+        /// Color property of refresh background color 
+        /// </summary>
+        public static readonly BindableProperty RefreshBackgroundColorProperty =
+            BindableProperty.Create(nameof(RefreshBackgroundColor), typeof(Color), typeof(PullToRefreshLayout), Color.Default);
+
+        /// <summary>
+        /// Color property of refresh spinner color 
+        /// </summary>
+        public static readonly BindableProperty RefreshColorProperty =
+            BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(PullToRefreshLayout), Color.Default);
+
+        /// <summary>
+        /// The refresh command property. 
+        /// </summary>
+        public static readonly BindableProperty RefreshCommandProperty =
+            BindableProperty.Create(nameof(RefreshCommand), typeof(ICommand), typeof(PullToRefreshLayout));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PullToRefreshLayout" /> class. 
         /// </summary>
         public PullToRefreshLayout()
@@ -20,10 +50,16 @@ namespace BaseMvvm.XamarinForms.Layouts
         }
 
         /// <summary>
-        /// The is refreshing property. 
+        /// Gets or sets a value indicating whether this instance is pull to refresh enabled. 
         /// </summary>
-        public static readonly BindableProperty IsRefreshingProperty =
-            BindableProperty.Create(nameof(IsRefreshing), typeof(bool), typeof(PullToRefreshLayout), false);
+        /// <value>
+        /// <c> true </c> if this instance is pull to refresh enabled; otherwise, <c> false </c>. 
+        /// </value>
+        public bool IsPullToRefreshEnabled
+        {
+            get { return (bool)GetValue(IsPullToRefreshEnabledProperty); }
+            set { SetValue(IsPullToRefreshEnabledProperty, value); }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is refreshing. 
@@ -44,46 +80,13 @@ namespace BaseMvvm.XamarinForms.Layouts
         }
 
         /// <summary>
-        /// The is pull to refresh enabled property. 
+        /// Refresh background color 
         /// </summary>
-        public static readonly BindableProperty IsPullToRefreshEnabledProperty =
-            BindableProperty.Create(nameof(IsPullToRefreshEnabled), typeof(bool), typeof(PullToRefreshLayout), true);
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is pull to refresh enabled. 
-        /// </summary>
-        /// <value>
-        /// <c> true </c> if this instance is pull to refresh enabled; otherwise, <c> false </c>. 
-        /// </value>
-        public bool IsPullToRefreshEnabled
+        public Color RefreshBackgroundColor
         {
-            get { return (bool)GetValue(IsPullToRefreshEnabledProperty); }
-            set { SetValue(IsPullToRefreshEnabledProperty, value); }
+            get { return (Color)GetValue(RefreshBackgroundColorProperty); }
+            set { SetValue(RefreshBackgroundColorProperty, value); }
         }
-
-        /// <summary>
-        /// The refresh command property. 
-        /// </summary>
-        public static readonly BindableProperty RefreshCommandProperty =
-            BindableProperty.Create(nameof(RefreshCommand), typeof(ICommand), typeof(PullToRefreshLayout));
-
-        /// <summary>
-        /// Gets or sets the refresh command. 
-        /// </summary>
-        /// <value>
-        /// The refresh command. 
-        /// </value>
-        public ICommand RefreshCommand
-        {
-            get { return (ICommand)GetValue(RefreshCommandProperty); }
-            set { SetValue(RefreshCommandProperty, value); }
-        }
-
-        /// <summary>
-        /// Color property of refresh spinner color 
-        /// </summary>
-        public static readonly BindableProperty RefreshColorProperty =
-            BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(PullToRefreshLayout), Color.Default);
 
         /// <summary>
         /// Refresh color 
@@ -95,18 +98,15 @@ namespace BaseMvvm.XamarinForms.Layouts
         }
 
         /// <summary>
-        /// Color property of refresh background color 
+        /// Gets or sets the refresh command. 
         /// </summary>
-        public static readonly BindableProperty RefreshBackgroundColorProperty =
-            BindableProperty.Create(nameof(RefreshBackgroundColor), typeof(Color), typeof(PullToRefreshLayout), Color.Default);
-
-        /// <summary>
-        /// Refresh background color 
-        /// </summary>
-        public Color RefreshBackgroundColor
+        /// <value>
+        /// The refresh command. 
+        /// </value>
+        public ICommand RefreshCommand
         {
-            get { return (Color)GetValue(RefreshBackgroundColorProperty); }
-            set { SetValue(RefreshBackgroundColorProperty, value); }
+            get { return (ICommand)GetValue(RefreshCommandProperty); }
+            set { SetValue(RefreshCommandProperty, value); }
         }
 
         /// <param name="widthConstraint">

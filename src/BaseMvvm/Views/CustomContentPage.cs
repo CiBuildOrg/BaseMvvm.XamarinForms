@@ -27,19 +27,6 @@ namespace BaseMvvm.XamarinForms.Views
             SetCommand("OnPullToRefresh", OnPullToRefresh);
         }
 
-        public virtual void OnException(object sender, Exception exception)
-        {
-        }
-
-        public virtual void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
-        {
-        }
-
-        public NavigationPage NavPage
-        {
-            get { return (Application.Current).MainPage as NavigationPage; }
-        }
-
         public ICommand Commands
         {
             get { return GetViewModel<BaseViewModel>().Commands; }
@@ -55,6 +42,11 @@ namespace BaseMvvm.XamarinForms.Views
         {
             get { return base.IsBusy; }
             set { base.IsBusy = GetViewModel<BaseViewModel>().IsBusy = value; }
+        }
+
+        public NavigationPage NavPage
+        {
+            get { return (Application.Current).MainPage as NavigationPage; }
         }
 
         public new string Title
@@ -73,6 +65,14 @@ namespace BaseMvvm.XamarinForms.Views
         public TViewModel GetViewModel<TViewModel>() where TViewModel : BaseViewModel
         {
             return (TViewModel)ViewModel;
+        }
+
+        public virtual void OnException(object sender, Exception exception)
+        {
+        }
+
+        public virtual void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
+        {
         }
 
         public virtual void OnPullToRefresh()

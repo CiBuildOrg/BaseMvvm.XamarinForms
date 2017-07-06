@@ -11,7 +11,20 @@ namespace BaseMvvm.XamarinForms.ViewModels
 
     public partial class BaseViewModel : ObservableObject
     {
+        private readonly Dictionary<string, OnCommandDelegate> cmds
+            = new Dictionary<string, OnCommandDelegate>();
+
+        private ICommand _commands;
         private FileImageSource _icon;
+
+        private bool _isBusy;
+
+        private string title = String.Empty;
+
+        public ICommand Commands
+        {
+            get { return _commands ?? (_commands = new Command<string>(async (multipleCommand) => await ExecuteCommands(multipleCommand))); }
+        }
 
         /// <summary>
         /// retrives from baseContent 
@@ -22,8 +35,6 @@ namespace BaseMvvm.XamarinForms.ViewModels
             set { SetProperty(ref _icon, value); }
         }
 
-        private bool _isBusy;
-
         /// <summary>
         /// retrives from baseContent 
         /// </summary>
@@ -33,8 +44,6 @@ namespace BaseMvvm.XamarinForms.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
-        private string title = String.Empty;
-
         /// <summary>
         /// retrives from baseContent 
         /// </summary>
@@ -42,30 +51,6 @@ namespace BaseMvvm.XamarinForms.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
-        }
-
-        private readonly Dictionary<string, OnCommandDelegate> cmds
-            = new Dictionary<string, OnCommandDelegate>();
-
-        private ICommand _commands;
-
-        public ICommand Commands
-        {
-            get { return _commands ?? (_commands = new Command<string>(async (multipleCommand) => await ExecuteCommands(multipleCommand))); }
-        }
-
-        /// <summary>
-        /// set custom command with external method, be careful for the multiple addition 
-        /// </summary>
-        /// <param name="commandName">
-        /// unique cmd name 
-        /// </param>
-        /// <param name="externalMethod">
-        /// triggered method 
-        /// </param>
-        public void SetCommand(string commandName, OnCommandDelegate externalMethod)
-        {
-            cmds[commandName] = externalMethod;
         }
 
         /// <summary>
@@ -80,6 +65,20 @@ namespace BaseMvvm.XamarinForms.ViewModels
         {
             if (!cmds.ContainsKey(commandName)) throw new Exception("CMD NOT FOUND");
             Commands.Execute($"{commandName},{useBusyIndicator}");
+        }
+
+        /// <summary>
+        /// set custom command with external method, be careful for the multiple addition 
+        /// </summary>
+        /// <param name="commandName">
+        /// unique cmd name 
+        /// </param>
+        /// <param name="externalMethod">
+        /// triggered method 
+        /// </param>
+        public void SetCommand(string commandName, OnCommandDelegate externalMethod)
+        {
+            cmds[commandName] = externalMethod;
         }
 
         /// <summary>
