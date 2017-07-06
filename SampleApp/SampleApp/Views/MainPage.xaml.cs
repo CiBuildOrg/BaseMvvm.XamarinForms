@@ -36,7 +36,7 @@ namespace SampleApp.Views
 
         private async void BtnCmd_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Page1(true));
+            await Navigation.PushAsync(new PullToRefresh(true));
         }
 
         private void BtnCallFromCmd()

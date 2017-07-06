@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
              xmlns:layouts="clr-namespace:BaseMvvm.XamarinForms.Layouts;assembly=BaseMvvm.XamarinForms"
-             x:Class="SampleApp.Views.Page1"
-             Title="{Binding CustomText}">
+             x:Class="SampleApp.Views.PullToRefresh"
+             Title="{Binding Title}">
   <views:CustomContentPage.Content>
     <layouts:PullToRefreshLayout
         IsPullToRefreshEnabled="True"
@@ -13,7 +13,7 @@
         RefreshColor="Blue">
       <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <Label x:Name="LblInfo" Text="Pull To Refresh the page" />
-        <Label Text="everytime bind Command with 'Commands' variable and you can use it with parameters" />
+        <Label Text="everytime bind CommandProperty with 'Commands' variable and you can use it with parameters" />
       </StackLayout>
     </layouts:PullToRefreshLayout>
   </views:CustomContentPage.Content>
