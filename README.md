@@ -1,7 +1,7 @@
 [![nuget](https://img.shields.io/badge/Nuget-BaseMvvm.XamarinForms-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/BaseMvvm.XamarinForms)
 
 # BaseMvvm.XamarinForms
-BaseMvvm.XamarinForms
+BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 
 
 ### Using CustomContentPage and CustomContentView
@@ -41,6 +41,7 @@ BaseMvvm.XamarinForms
 </views:CustomContentPage>
  ```
 
+
 ### Using CommandProperty with CommandParameter
 - we dont need everytime a new ICommand instance we only sets onces then call it with parameter, it allows call different action.
  ```c#
@@ -68,6 +69,7 @@ BaseMvvm.XamarinForms
     <Button x:Name="BtnCallCmd" Text="Call Command"  Command="{Binding Commands}" CommandParameter="CustomCmd,true"></Button>
  ```
  
+ 
  ### PullToRefresh Feature
  - thanks to `jamesmontemagno` for this feature, i only changed a few codes for implement to my Library, so now it calls `
             command.Execute("OnPullToRefresh");` you do not need to determine a command for this.
@@ -90,7 +92,18 @@ BaseMvvm.XamarinForms
      }
     ```
     
-    
+  ### MvvmMessagingCenter
+  
+   #### Init() method
+   
+   #### SubcribeIncomingEvent
+   
+   #### SendIncomingEvent
+   
+   #### OnIncomingEvents
+   
+   #### SendException
  
+   #### OnException
  
- 
+   #### role of OnAppearing() method
