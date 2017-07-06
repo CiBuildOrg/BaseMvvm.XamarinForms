@@ -4,7 +4,7 @@
 BaseMvvm.XamarinForms all-in-one easy mvvm implementation
 
 
-### Using CustomContentPage and CustomContentView
+### Using View with CustomContentPage and CustomContentView
 - just change **ContentPage** to **CustomContentPage** or **CustomContentView**
 
 ```c#
@@ -43,7 +43,7 @@ public partial class MainPage : CustomContentPage // or CustomContentView
  ```
 
 
-### Using CommandProperty with CommandParameter
+### Using ViewModel and CommandProperty with CommandParameter
 - we dont need everytime a new ICommand instance we only sets onces then call it with parameter, it allows call different action.
  ```c#
 //command initializer, first parameter is commandName, second is that actionMethod
