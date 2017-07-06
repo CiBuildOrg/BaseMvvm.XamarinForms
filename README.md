@@ -140,7 +140,7 @@ MvvmMessagingCenter.SendIncomingEvent(this, "testMessage", new { userName = "mus
 public override void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
 {
 object obj = args.Cast<object>(); //custom caster, whatevery you want, you can cast
-DisplayAlert("exception", args.MessageId + " " + obj.ToString(), "OK");
+DisplayAlert("AnyEvent1", args.MessageId + " " + obj.ToString(), "OK");
 ```
    
    
