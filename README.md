@@ -157,6 +157,8 @@ catch (Exception exception)
     MvvmMessagingCenter.SendException(this, exception); 
     
     //also you can send this error to different page
+    //only call new page after SendException method it can auto redirect to new page 
+    //no need to use constructure paramater only override OnException() method :))
     await Navigation.PushAsync(new ExceptionPage());
 }
    ```
