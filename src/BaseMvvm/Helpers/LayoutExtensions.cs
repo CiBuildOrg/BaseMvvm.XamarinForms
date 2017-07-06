@@ -10,6 +10,15 @@ namespace BaseMvvm.XamarinForms.Helpers
     {
         #region main page change
 
+        /// <summary>
+        /// force to change mainPage, so user can't go back never 
+        /// </summary>
+        /// <param name="app">
+        /// </param>
+        /// <param name="page">
+        /// </param>
+        /// <returns>
+        /// </returns>
         //https://forums.xamarin.com/discussion/26870/changing-root-from-a-navigation-page
         public static async Task ChangeMainPage(this ICustomLayout app, Page page)
         {
@@ -18,6 +27,13 @@ namespace BaseMvvm.XamarinForms.Helpers
             await PopToRootAsync(app.NavPage);
         }
 
+        /// <summary>
+        /// helper for ChangeMainPage method 
+        /// </summary>
+        /// <param name="np">
+        /// </param>
+        /// <returns>
+        /// </returns>
         private static async Task PopToRootAsync(NavigationPage np)
         {
             while (np.Navigation.ModalStack.Count > 0)
@@ -33,7 +49,7 @@ namespace BaseMvvm.XamarinForms.Helpers
         #endregion main page change
 
         /// <summary>
-        /// caster of EventProperty 
+        /// caster of EventProperty for MvvmMessagingCenter 
         /// </summary>
         /// <typeparam name="T">
         /// </typeparam>

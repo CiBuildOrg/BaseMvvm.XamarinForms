@@ -7,20 +7,45 @@ using Xamarin.Forms;
 
 namespace BaseMvvm.XamarinForms.ViewModels
 {
+    /// <summary>
+    /// main action delegate 
+    /// </summary>
     public delegate void OnCommandDelegate();
 
+    /// <summary>
+    /// base mvvm structure 
+    /// </summary>
     public partial class BaseViewModel : ObservableObject
     {
+        /// <summary>
+        /// magic trick for async multiple action 
+        /// </summary>
         private readonly Dictionary<string, OnCommandDelegate> cmds
             = new Dictionary<string, OnCommandDelegate>();
 
+        /// <summary>
+        /// Main Command Manager 
+        /// </summary>
         private ICommand _commands;
+
+        /// <summary>
+        /// Page icon 
+        /// </summary>
         private FileImageSource _icon;
 
+        /// <summary>
+        /// for ActivityIndicator 
+        /// </summary>
         private bool _isBusy;
 
+        /// <summary>
+        /// for page title 
+        /// </summary>
         private string title = String.Empty;
 
+        /// <summary>
+        /// always use this variable for CommandProperty (do not determine a new ICommand) 
+        /// </summary>
         public ICommand Commands
         {
             get { return _commands ?? (_commands = new Command<string>(async (multipleCommand) => await ExecuteCommands(multipleCommand))); }
@@ -54,12 +79,14 @@ namespace BaseMvvm.XamarinForms.ViewModels
         }
 
         /// <summary>
+        /// using one ICommand and Calls it with parameters 
         /// </summary>
         /// <param name="commandName">
-        /// unique cmd name 
+        /// multiple command separates with comma [ First:commandName{string},
+        /// Second:useBusyIndicator{boolean} ]
         /// </param>
         /// <param name="useBusyIndicator">
-        /// use with activityindicator 
+        /// manages the IsBusyProperty and works async method 
         /// </param>
         public void CallCommand(string commandName, bool useBusyIndicator = true)
         {
@@ -68,7 +95,7 @@ namespace BaseMvvm.XamarinForms.ViewModels
         }
 
         /// <summary>
-        /// set custom command with external method, be careful for the multiple addition 
+        /// set custom command with external method, be careful for the multiple addition(with same commandName) 
         /// </summary>
         /// <param name="commandName">
         /// unique cmd name 
@@ -82,12 +109,14 @@ namespace BaseMvvm.XamarinForms.ViewModels
         }
 
         /// <summary>
+        /// using one ICommand and Calls it with parameters 
         /// </summary>
         /// <param name="multipleCommand">
         /// multiple command separates with comma [ First:commandName{string},
         /// Second:useBusyIndicator{boolean} ]
         /// </param>
         /// <returns>
+        /// Task 
         /// </returns>
         private async Task ExecuteCommands(string multipleCommand)
         {

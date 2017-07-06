@@ -4,7 +4,7 @@ using Xamarin.Forms;
 namespace BaseMvvm.XamarinForms.Layouts
 {
     /// <summary>
-    /// Pull to refresh layout. 
+    /// Pull to refresh layout. thanks to jamesmontemagno 
     /// </summary>
     //https://github.com/jamesmontemagno/Xamarin.Forms-PullToRefreshLayout
     public class PullToRefreshLayout : ContentView

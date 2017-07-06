@@ -14,8 +14,9 @@ using Xamarin.Forms.Platform.Android;
 namespace BaseMvvm.Droid.Renderers
 {
     /// <summary>
-    /// Pull to refresh layout renderer. 
+    /// Pull to refresh layout. thanks to jamesmontemagno 
     /// </summary>
+    //https://github.com/jamesmontemagno/Xamarin.Forms-PullToRefreshLayout
     [Preserve(AllMembers = true)]
     public class PullToRefreshLayoutRenderer : SwipeRefreshLayout,
         IVisualElementRenderer,
