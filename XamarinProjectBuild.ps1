@@ -1,6 +1,5 @@
 ﻿if($($env:APPVEYOR))
 { 
-    Update-AppveyorBuild -Version "$(Get-Date -format 1.y.M.dhhmm)";
     $SVersion = $($env:APPVEYOR_BUILD_VERSION);
     Write-Host "BaseMvvm.XamarinForms Version:$SVersion";
 
