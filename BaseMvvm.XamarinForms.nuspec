@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BaseMvvm.XamarinForms</id>
-        <version>1.0.0.5</version>
+        <version>1.0.0.0</version>
         <title>BaseMvvm.XamarinForms</title>
         <authors>Mustafa Salih ASLIM</authors>
         <owners>Mustafa Salih ASLIM</owners>
@@ -11,7 +11,7 @@
         <iconUrl>https://github.com/msx752/BaseMvvm.XamarinForms/blob/master/wfc.png?raw=true</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>all-in-one easy mvvm implementation for Xamarin.Forms with PullToRefresh feature. look at github for guideline or take a look at sample project.</description>
-        <releaseNotes>there is no changes only dependency versions are fixed for Xamarin.Forms</releaseNotes>
+        <releaseNotes></releaseNotes>
         <copyright>Copyright 2017</copyright>
         <tags>Xamarin.Forms Xamarin Android IOS Mvvm ContentPage ContentView</tags>
         <dependencies>
@@ -34,13 +34,16 @@
     <file src="src\BaseMvvm\Bin\Release\BaseMvvm.XamarinForms.dll" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.dll" />
     <file src="src\BaseMvvm\Bin\Release\BaseMvvm.XamarinForms.xml" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.xml" />
     <file src="src\BaseMvvm\Bin\Release\BaseMvvm.XamarinForms.pdb" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.pdb" />
+    <file src="src\BaseMvvm\Bin\Release\BaseMvvm.XamarinForms.dll.mdb" target="lib\portable45-net45+win8+wp8+wpa81\BaseMvvm.XamarinForms.dll.mdb" />
 
     <file src="src\BaseMvvm.Droid\Bin\Release\BaseMvvm.Droid.dll" target="lib\monoandroid60\BaseMvvm.Droid.dll" />
     <file src="src\BaseMvvm.Droid\Bin\Release\BaseMvvm.Droid.xml" target="lib\monoandroid60\BaseMvvm.Droid.xml" />
     <file src="src\BaseMvvm.Droid\Bin\Release\BaseMvvm.Droid.pdb" target="lib\monoandroid60\BaseMvvm.Droid.pdb" />
+    <file src="src\BaseMvvm.Droid\Bin\Release\BaseMvvm.Droid.dll.mdb" target="lib\monoandroid60\BaseMvvm.Droid.dll.mdb" />
 
     <file src="src\BaseMvvm.iOS\Bin\Release\BaseMvvm.iOS.dll" target="lib\xamarinios10\BaseMvvm.iOS.dll" />
     <file src="src\BaseMvvm.iOS\Bin\Release\BaseMvvm.iOS.xml" target="lib\xamarinios10\BaseMvvm.iOS.xml" />
     <file src="src\BaseMvvm.iOS\Bin\Release\BaseMvvm.iOS.pdb" target="lib\xamarinios10\BaseMvvm.iOS.pdb" /> 
+    <file src="src\BaseMvvm.iOS\Bin\Release\BaseMvvm.iOS.dll.mdb" target="lib\xamarinios10\BaseMvvm.iOS.dll.mdb" /> 
     </files>
 </package>
