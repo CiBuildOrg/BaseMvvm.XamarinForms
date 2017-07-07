@@ -2,8 +2,8 @@
 { 
 	$SVersion = $($env:APPVEYOR_BUILD_VERSION);
     Write-Host "BaseMvvm.XamarinForms Version:$SVersion";
-.\nuget pack BaseMvvm.XamarinForms.nuspec -version $SVersion
-F
+.\nuget pack BaseMvvm.XamarinForms.nuspec -version $SVersion;
+
     Push-AppveyorArtifact "C:\projects\basemvvm-xamarinforms\BaseMvvm.XamarinForms.$SVersion.nupkg" -FileName "NugetPackage1";
 }
 else{
