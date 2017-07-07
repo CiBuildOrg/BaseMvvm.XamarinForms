@@ -1,9 +1,10 @@
-﻿$path = "src\BaseMvvm\Properties\AssemblyInfo.cs" 
-$pattern = '\[assembly: AssemblyVersion\("(\d\.\d\.\d\.\d)"\)\]'
-$content = Get-Content $path;
-$rslt = $content -match $pattern;
-$SlnVersion = $rslt -replace '[assembly: AssemblyVersion\(")]' ,"";
-$SlnVersion = $SlnVersion -replace '\[' ,"";
-$SlnVersion = $SlnVersion -replace '\]' ,"";
-Write-Host "BaseMvvm.XamarinForms Version:" $SlnVersion;
-.\nuget pack BaseMvvm.XamarinForms.nuspec -version $SlnVersion;
+﻿if($($env:APPVEYOR))
+{
+    $SVersion = $($env:APPVEYOR_BUILD_VERSION);
+    Write-Host $SVersion
+\.SlnVersionChange $SVersion;
+    Write-Host "BaseMvvm.XamarinForms Version:" $SVersion;
+.\nuget pack BaseMvvm.XamarinForms.nuspec -version $SVersion;
+}else{
+    Write-Host "AppVeyor was not detected"
+}
