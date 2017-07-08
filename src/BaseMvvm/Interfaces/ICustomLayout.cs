@@ -80,11 +80,6 @@ namespace BaseMvvm.XamarinForms.Interfaces
         void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args);
 
         /// <summary>
-        /// PullToRefresh action method (it can be works async) 
-        /// </summary>
-        void OnPullToRefresh();
-
-        /// <summary>
         /// set custom command with external method, be careful for the conflicts 
         /// </summary>
         /// <param name="commandName">

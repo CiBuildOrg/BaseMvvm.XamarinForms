@@ -29,22 +29,12 @@ namespace BaseMvvm.XamarinForms.Views
         {
         }
 
-        /// <summary>
-        /// create a page 
-        /// </summary>
-        /// <param name="navigationBar">
-        /// show / hide navigationBar 
-        /// </param>
-        /// <param name="bindingContextData">
-        /// set a custom BaseViewModel 
-        /// </param>
         public CustomContentView(bool navigationBar, object bindingContextData)
         {
             MvvmMessagingCenter.Init(this);
             ViewModel = bindingContextData ?? Activator.CreateInstance(typeof(BaseViewModel));
             this.BindingContext = ViewModel;
             NavigationPage.SetHasNavigationBar(this, navigationBar);
-            SetCommand("OnPullToRefresh", OnPullToRefresh);
         }
 
         public ICommand Commands
@@ -92,10 +82,6 @@ namespace BaseMvvm.XamarinForms.Views
         }
 
         public virtual void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
-        {
-        }
-
-        public virtual void OnPullToRefresh()
         {
         }
 

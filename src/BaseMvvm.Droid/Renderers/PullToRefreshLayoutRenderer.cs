@@ -281,7 +281,7 @@ namespace BaseMvvm.Droid.Renderers
             if (command == null)
                 return;
 
-            command.Execute("OnPullToRefresh");
+            command.Execute("@OnPullToRefresh");
             UpdateIsRefreshing();
         }
 

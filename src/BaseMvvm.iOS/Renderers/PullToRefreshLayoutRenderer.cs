@@ -194,7 +194,7 @@ namespace BaseMvvm.iOS.Renderers
                 if (command == null)
                     return;
 
-                command.Execute("OnPullToRefresh");
+                command.Execute("@OnPullToRefresh");
                 UpdateIsRefreshing();
             });
         }

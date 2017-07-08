@@ -44,7 +44,7 @@ namespace BaseMvvm.XamarinForms.Views
             ViewModel = bindingContextData ?? Activator.CreateInstance(typeof(BaseViewModel));
             this.BindingContext = ViewModel;
             NavigationPage.SetHasNavigationBar(this, navigationBar);
-            SetCommand("OnPullToRefresh", OnPullToRefresh);
+            SetCommand("@OnPullToRefresh", OnPullToRefresh);
         }
 
         protected override void OnAppearing()
@@ -101,6 +101,9 @@ namespace BaseMvvm.XamarinForms.Views
         {
         }
 
+        /// <summary>
+        /// PullToRefresh action method (it can be works async) 
+        /// </summary>
         public virtual void OnPullToRefresh()
         {
         }
