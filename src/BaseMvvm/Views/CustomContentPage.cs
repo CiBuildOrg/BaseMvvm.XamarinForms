@@ -27,7 +27,7 @@ namespace BaseMvvm.XamarinForms.Views
             SetCommand("OnPullToRefresh", OnPullToRefresh);
         }
 
-        public new virtual void OnAppearing()
+        protected override void OnAppearing()
         {
             MvvmMessagingCenter.Init(this);
             base.OnAppearing();

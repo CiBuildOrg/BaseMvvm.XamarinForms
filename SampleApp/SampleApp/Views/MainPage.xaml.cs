@@ -36,6 +36,11 @@ namespace SampleApp.Views
             await Navigation.PushAsync(new PullToRefresh(true));
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         private void BtnCallFromCmd()
         {
             GetViewModel<MainPageViewModel>().LblText =
