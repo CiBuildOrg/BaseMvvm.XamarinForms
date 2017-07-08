@@ -8,16 +8,36 @@ using Xamarin.Forms;
 
 namespace BaseMvvm.XamarinForms.Views
 {
+    /// <summary>
+    /// modified ContentView 
+    /// </summary>
     public class CustomContentView : ContentView, ICustomLayout
     {
+        /// <summary>
+        /// </summary>
+        /// <param name="navigationBar">
+        /// show / hide navigationBar 
+        /// </param>
         public CustomContentView(bool navigationBar) : this(navigationBar, null)
         {
         }
 
+        /// <summary>
+        /// create a page with showing navigationBar 
+        /// </summary>
         public CustomContentView() : this(true, null)
         {
         }
 
+        /// <summary>
+        /// create a page 
+        /// </summary>
+        /// <param name="navigationBar">
+        /// show / hide navigationBar 
+        /// </param>
+        /// <param name="bindingContextData">
+        /// set a custom BaseViewModel 
+        /// </param>
         public CustomContentView(bool navigationBar, object bindingContextData)
         {
             MvvmMessagingCenter.Init(this);

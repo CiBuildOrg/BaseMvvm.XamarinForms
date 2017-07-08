@@ -9,16 +9,36 @@ using Xamarin.Forms;
 
 namespace BaseMvvm.XamarinForms.Views
 {
+    /// <summary>
+    /// modified ContentPage 
+    /// </summary>
     public class CustomContentPage : ContentPage, ICustomLayout
     {
+        /// <summary>
+        /// </summary>
+        /// <param name="navigationBar">
+        /// show / hide navigationBar 
+        /// </param>
         public CustomContentPage(bool navigationBar) : this(navigationBar, null)
         {
         }
 
+        /// <summary>
+        /// create a page with showing navigationBar 
+        /// </summary>
         public CustomContentPage() : this(true, null)
         {
         }
 
+        /// <summary>
+        /// create a page 
+        /// </summary>
+        /// <param name="navigationBar">
+        /// show / hide navigationBar 
+        /// </param>
+        /// <param name="bindingContextData">
+        /// set a custom BaseViewModel 
+        /// </param>
         public CustomContentPage(bool navigationBar, object bindingContextData)
         {
             ViewModel = bindingContextData ?? Activator.CreateInstance(typeof(BaseViewModel));
