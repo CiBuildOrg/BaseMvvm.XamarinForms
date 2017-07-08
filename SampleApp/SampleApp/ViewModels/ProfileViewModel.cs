@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BaseMvvm.XamarinForms.ViewModels;
+using Xamarin.Forms;
 
 namespace SampleApp.ViewModels
 {
@@ -16,6 +17,14 @@ namespace SampleApp.ViewModels
         {
             get { return username; }
             set { SetProperty(ref username, value, UsernamePropertyName); }
+        }
+
+        private Color _aicolor;
+
+        public Color AiColor
+        {
+            get { return _aicolor; }
+            set { SetProperty(ref _aicolor, value); }
         }
     }
 }

@@ -5,9 +5,5 @@
              xmlns:views1="clr-namespace:BaseMvvm.XamarinForms.Views;assembly=BaseMvvm.XamarinForms"
              x:Class="SampleApp.Views.SettingsUser">
     <views1:CustomContentPage.Content>
-        <StackLayout>
-            <views:SettingsUserView>
-            </views:SettingsUserView>
-        </StackLayout>
     </views1:CustomContentPage.Content>
 </views1:CustomContentPage>

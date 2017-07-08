@@ -20,6 +20,13 @@ namespace SampleApp.Views
             CallCommand("OnLoadProfile", true);
         }
 
+        public SettingsUserView(bool navigationBar, object bindingContextData) : base(navigationBar, bindingContextData)
+        {
+            InitializeComponent();
+            SetCommand("OnLoadProfile", OnLoadProfile);
+            CallCommand("OnLoadProfile", true);
+        }
+
         public void OnLoadProfile()
         {
             var viewModel = GetViewModel<ProfileViewModel>();
@@ -30,7 +37,8 @@ namespace SampleApp.Views
                     //async
                 }
             }
-            viewModel.DisplayName = "TEST USERNAME";
+            Random rn = new Random();
+            viewModel.DisplayName = "TEST USERPROFILE: " + rn.Next(1, 1000);
         }
     }
 }
