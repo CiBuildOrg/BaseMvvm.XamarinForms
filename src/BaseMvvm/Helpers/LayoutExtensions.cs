@@ -6,6 +6,9 @@ using Xamarin.Forms;
 
 namespace BaseMvvm.XamarinForms.Helpers
 {
+    /// <summary>
+    /// extensions of BaseMvvm.XamarinForms 
+    /// </summary>
     public static class LayoutExtensio
     {
         #region main page change

@@ -24,14 +24,11 @@ namespace SampleApp.Views
             MvvmMessagingCenter.SubcribeIncomingEvent(this, "testMessage");
         }
 
-        private bool bl = false;
-
         private void CustomCmdMth()
         {
             LblInfo.BackgroundColor = Color.White;
             LblInfo.TextColor = Color.Red;
-
-            LblInfo.Text = "you can access xaml properties while call from in ctor: " + bl;
+            LblInfo.Text = "CallCommand(\"CustomCmd\", false); is called CustomCmdMth() from constructure, you can access xaml properties:";
         }
 
         private async void BtnCmd_Clicked(object sender, EventArgs e)
@@ -44,13 +41,14 @@ namespace SampleApp.Views
             GetViewModel<MainPageViewModel>().LblText =
                 "text is changed dynamically: " + GetViewModel<MainPageViewModel>().State;
             GetViewModel<MainPageViewModel>().State = !GetViewModel<MainPageViewModel>().State;
+            GetViewModel<MainPageViewModel>().LblColor = Color.Blue;
         }
 
         private void BtnThrowException_Clicked(object sender, EventArgs e)
         {
             try
             {
-                throw new Exception("custom exception!!!");
+                throw new Exception("custom exception is thrown!!!");
             }
             catch (Exception exception)
             {
@@ -66,7 +64,7 @@ namespace SampleApp.Views
         public override void OnIncomingEvents(ICustomLayout sender, MvvmMessagingCenterEventArgs args)
         {
             object obj = args.Cast<object>(); //custom caster
-            DisplayAlert("exception", args.MessageId + " " + obj.ToString(), "OK");
+            DisplayAlert("CustomEvent", args.MessageId + " " + obj.ToString(), "OK");
         }
 
         private void BtnMessaningCenter1_Clicked(object sender, EventArgs e)
@@ -90,6 +88,11 @@ namespace SampleApp.Views
                 MvvmMessagingCenter.SendException(this, exception); //subcriber is auto change to currentPage
                 await Navigation.PushAsync(new ExceptionPage());
             }
+        }
+
+        private async void BtnSetMain_Clicked(object sender, EventArgs e)
+        {
+            await this.ChangeMainPage(new SetMainPage());
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SampleApp.ViewModels
 {
@@ -22,6 +23,14 @@ namespace SampleApp.ViewModels
         {
             get { return _state; }
             set { SetProperty(ref _state, value); }
+        }
+
+        private Color _color;
+
+        public Color LblColor
+        {
+            get { return _color; }
+            set { SetProperty(ref _color, value); }
         }
     }
 }

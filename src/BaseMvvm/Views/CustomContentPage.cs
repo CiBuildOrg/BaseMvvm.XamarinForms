@@ -1,6 +1,7 @@
 ﻿using BaseMvvm.XamarinForms.Interfaces;
 using BaseMvvm.XamarinForms.ViewModels;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using BaseMvvm.XamarinForms.Helpers;
 using BaseMvvm.XamarinForms.Models;
