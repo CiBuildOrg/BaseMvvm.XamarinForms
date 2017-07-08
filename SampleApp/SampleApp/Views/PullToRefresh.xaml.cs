@@ -20,7 +20,7 @@ namespace SampleApp.Views
 
         public override void OnPullToRefresh()
         {
-            GetViewModel<BaseViewModel>().Title = "processing...";
+            var viewModel = GetViewModel<BaseViewModel>();
             for (int i = 0; i < 100000; i++)
             {
                 for (int j = 0; j < 10000; j++)
@@ -28,7 +28,7 @@ namespace SampleApp.Views
                     //async
                 }
             }
-            GetViewModel<BaseViewModel>().Title = "pulled and refreshed the page";
+            viewModel.Title = "pulled and refreshed the page";
         }
     }
 }

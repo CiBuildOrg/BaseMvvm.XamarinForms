@@ -22,6 +22,7 @@ namespace SampleApp.Views
 
         public void OnLoadProfile()
         {
+            var viewModel = GetViewModel<ProfileViewModel>();
             for (int i = 0; i < 100000; i++)
             {
                 for (int j = 0; j < 10000; j++)
@@ -29,7 +30,7 @@ namespace SampleApp.Views
                     //async
                 }
             }
-            GetViewModel<ProfileViewModel>().DisplayName = "TEST USER NAME";
+            viewModel.DisplayName = "TEST USERNAME";
         }
     }
 }

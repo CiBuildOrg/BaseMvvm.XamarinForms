@@ -43,10 +43,11 @@ namespace SampleApp.Views
 
         private void BtnCallFromCmd()
         {
-            GetViewModel<MainPageViewModel>().LblText =
-                "text is changed dynamically: " + GetViewModel<MainPageViewModel>().State;
-            GetViewModel<MainPageViewModel>().State = !GetViewModel<MainPageViewModel>().State;
-            GetViewModel<MainPageViewModel>().LblColor = Color.Blue;
+            var viewModel = GetViewModel<MainPageViewModel>();
+            viewModel.LblText =
+                "text is changed dynamically: " + viewModel.State;
+            viewModel.State = !viewModel.State;
+            viewModel.LblColor = Color.Blue;
         }
 
         private void BtnThrowException_Clicked(object sender, EventArgs e)
