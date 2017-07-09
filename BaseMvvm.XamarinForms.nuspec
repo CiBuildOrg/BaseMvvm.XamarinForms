@@ -3,7 +3,7 @@
     <metadata>
         <id>BaseMvvm.XamarinForms</id>
         <version>1.0.0.0</version>
-        <title>BaseMvvm.XamarinForms</title>
+        <title>Mvvm Implementation for Xamarin.Forms</title>
         <authors>Mustafa Salih ASLIM</authors>
         <owners>Mustafa Salih ASLIM</owners>
         <licenseUrl>https://github.com/msx752/BaseMvvm.XamarinForms/blob/master/LICENSE</licenseUrl>
