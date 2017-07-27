@@ -12,6 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>all-in-one easy mvvm implementation for Xamarin.Forms with PullToRefresh feature. look at github for guideline or take a look at sample project.</description>
         <releaseNotes></releaseNotes>
+        <summary>all-in-one easy mvvm implementation for Xamarin.Forms with PullToRefresh feature.</summary>
         <copyright>Copyright 2017</copyright>
         <tags>Xamarin.Forms Xamarin Android IOS Mvvm ContentPage ContentView</tags>
         <dependencies>
